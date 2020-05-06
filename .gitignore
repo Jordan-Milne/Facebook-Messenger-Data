@@ -7,3 +7,8 @@ messages.txt
 /files/*
 /Facebook-Messenger-Data/*
 /archived_threads/*
+build/
+dist/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
