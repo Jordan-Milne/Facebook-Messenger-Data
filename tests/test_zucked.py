@@ -31,5 +31,3 @@ def test_words():
     }]
     top_words = [('yeah', 2), ('it', 1), ('is', 1), ('haha', 1)]
     assert zucked.top_50_words(d,'User1') == top_words
-    
-

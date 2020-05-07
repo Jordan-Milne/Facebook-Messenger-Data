@@ -1,14 +1,7 @@
-date.py
-messages.txt
-/stickers_used/*
-/message_requests/*
-/inbox/*
-/filtered_threads/*
-/files/*
-/Facebook-Messenger-Data/*
-/archived_threads/*
+
 build/
 dist/
+.pytest_cache/
 downloads/
 eggs/
 .eggs/
