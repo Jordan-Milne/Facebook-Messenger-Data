@@ -1,0 +1,14 @@
+language: python
+python:
+- '3.6'
+deploy:
+  provider: pypi
+  user: JordanMilne
+  password: $PYPI_PASSWORD
+
+install:
+  - "pip install -e ."
+  - "pip install pytest"
+
+script:
+  - ls
