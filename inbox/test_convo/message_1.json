@@ -1,0 +1,22 @@
+{
+  "participants": [
+    {
+      "name": "Zark Muckerberg"
+    },
+    {
+      "name": "Jordan Milne"
+    }
+  ],
+  "messages": [
+    {
+      "sender_name": "Jordan Milne",
+      "timestamp_ms": 1465487214388,
+      "content": "hi hi hi lol lol one",
+      "type": "Generic"
+    }
+  ],
+  "title": "Zark Muckerberg",
+  "is_still_participant": true,
+  "thread_type": "Regular",
+  "thread_path": "inbox/Zark Muckerberg_sdncdsa"
+}

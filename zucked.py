@@ -25,11 +25,11 @@ class read_messages():
     def top_50_words(facebook_name):
         # Making a list of every message sent by me
         message = []
-        for i in range(len(messages.result)):
-            for m in range(len(messages.result[i]['messages'])):
-                if messages.result[i]['messages'][m]['sender_name'] == facebook_name:
+        for i in range(len(read_messages.result)):
+            for m in range(len(read_messages.result[i]['messages'])):
+                if read_messages.result[i]['messages'][m]['sender_name'] == facebook_name:
                     try:
-                        message.append(messages.result[i]['messages'][m]['content'])
+                        message.append(read_messages.result[i]['messages'][m]['content'])
                     except:
                         pass
 
