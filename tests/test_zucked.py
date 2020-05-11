@@ -14,8 +14,7 @@ def test_top_convos():
 
 def test_search():
     search = [{'Message': 'hi hi hi lol lol one',
-                  'Sent to': 'Zark Muckerberg',
-                  'Date': '2016-06-09 11:46:54'}]
-
+  'Sent to': 'Zark Muckerberg',
+  'Date': '2016-06-09 11:46:54'}]
     ms = zd.read_messages
     assert ms.search_messages('Jordan Milne','one') == search

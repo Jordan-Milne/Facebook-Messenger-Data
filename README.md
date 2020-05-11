@@ -59,7 +59,7 @@ save `read_messages` as a variable, which we will be calling methods on later.
 
 Example:
 ```
-ms = read_messages
+ms = zd.read_messages
 ```
 
 ### top_words()
