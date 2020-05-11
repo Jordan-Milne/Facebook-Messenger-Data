@@ -1,6 +1,6 @@
-<h3 align="center">
-  <img src="https://raw.githubusercontent.com/Jordan-Milne/zucked/master/icon.png" height="300px" alt="zucked">
-</h3>
+<p align="center">
+  <a href="https://github.com/Jordan-Milne/zucked"><img alt="Dependencies"src="https://raw.githubusercontent.com/Jordan-Milne/zucked/master/icon.png"></a>
+<p>
 <p align="center">   
   <a href="https://github.com/Jordan-Milne/zucked/blob/master/setup.py"><img alt="Dependencies"src="https://img.shields.io/badge/dependencies-0-brightgreen"></a>
   <a href="https://travis-ci.org/github/Jordan-Milne/zucked"><img alt="Travis" src="https://img.shields.io/travis/jordan-milne/zucked"></a>   
