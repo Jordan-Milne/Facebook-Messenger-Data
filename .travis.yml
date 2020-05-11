@@ -5,6 +5,8 @@ deploy:
   provider: pypi
   user: JordanMilne
   password: $PYPI_PASSWORD
+  on:
+    tags: true
 
 install:
   - "pip install -e ."
@@ -12,5 +14,3 @@ install:
 
 script:
   - pytest tests/
-deploy:
-  skip_cleanup: true
