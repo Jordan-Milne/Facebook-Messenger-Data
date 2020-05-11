@@ -59,7 +59,7 @@ save `read_messages` as a variable, which we will be calling methods on later.
 
 Example:
 ```
-ms = read_messages
+ms = zd.read_messages
 ```
 
 ### top_words()
@@ -89,7 +89,7 @@ ms.top_convos('Jordan Milne')
 Returns:
 ```
 [('User 1', 33),
-  ('User 2', 21)]
+ ('User 2', 21)]
 ```
 ### search_messages()
 
