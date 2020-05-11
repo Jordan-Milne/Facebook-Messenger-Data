@@ -89,7 +89,7 @@ ms.top_convos('Jordan Milne')
 Returns:
 ```
 [('User 1', 33),
-  ('User 2', 21)]
+ ('User 2', 21)]
 ```
 ### search_messages()
 
