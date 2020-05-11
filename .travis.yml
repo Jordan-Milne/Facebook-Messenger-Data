@@ -5,8 +5,6 @@ deploy:
   provider: pypi
   user: JordanMilne
   password: $PYPI_PASSWORD
-  on:
-    tags: true
 
 install:
   - "pip install -e ."
