@@ -14,3 +14,5 @@ install:
 
 script:
   - pytest tests/
+deploy:
+  skip_cleanup: true
