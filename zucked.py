@@ -14,12 +14,21 @@ class read_messages:
         with open(f'inbox/{folder}/message_1.json', 'r') as f:
             result.append(json.load(f))
 
-
-    def top_words(facebook_name):
+    stopwords = ['i','me','my','myself','we','our','ours','ourselves','you',"you're","you've","you'll","you'd",'your','yours','yourself','yourselves','he','him','his',
+    'himself','she',"she's",'her','hers','herself','it',"it's",'its','itself','they','them','their','theirs','themselves','what','which','who','whom','this','that',
+    "that'll",'these','those','am','is','are','was','were','be','been','being','have','has','had','having','do','does','did','doing','a','an','the','and','but','if',
+    'or','because','as','until','while','of','at','by','for','with','about','against','between','into','through','during','before','after','above','below','to','from',
+    'up','down','in','out','on','off','over','under','again','further','then','once','here','there','when','where','why','how','all','any','both','each','few','more',
+    'most','other','some','such','no','nor','not','only','own','same','so','than','too','very','s','t','can','will','just','don',"don't",'should',"should've",'now','d',
+    'll','m','o','re','ve','y','ain','aren',"aren't",'couldn',"couldn't",'didn',"didn't",'doesn',"doesn't",'hadn',"hadn't",'hasn',"hasn't",'haven',"haven't",'isn',
+    "isn't",'ma','mightn',"mightn't",'mustn',"mustn't",'needn',"needn't",'shan',"shan't",'shouldn',"shouldn't",'wasn',"wasn't",'weren',"weren't",'won',"won't",'wouldn',
+    "wouldn't","i'm"]
+    def top_words(facebook_name, stop_words=True):
         """
         Returns the top words sent by a Facebook user (can be sender or reciever of messages)
         Params:
         - facebook_name (string): Name of desired Facebook user
+        - stop_words (Bool): Will the words returned include stopwords
         Example:
         ```
         ms = read_messages
@@ -36,19 +45,16 @@ class read_messages:
                         message.append(read_messages.result[i]['messages'][m]['content'])
                     except:
                         pass
-
         # Removing messages facebook sent whenever someone sent a link/attachment
         stopword = 'You sent an attachment.'
         for i, sub_list in enumerate(message):
                 if stopword in sub_list:
                         del message[i]
 
-
         stopword = 'You sent a link.'
         for i, sub_list in enumerate(message):
                 if stopword in sub_list:
                         del message[i]
-
         # Removing all links someone sent (using regex)
         for i in range(len(message)):
             message[i] = re.sub(r'http\S+', '', message[i])
@@ -57,14 +63,17 @@ class read_messages:
         for i in range(len(message)):
             message[i] = message[i].lower()
 
-        # Making a list of words from the list of messages using regex to include "don't" as a word and not seperating on apostrophes
-        word_list = []
-        for words in list(message):
-            rgx = re.compile("([\w][\w']*\w)")
-            word_list = word_list + rgx.findall(words)
+        # Making a list of words from the list of messages
+        word_list = [word for sentence in message for word in sentence.split()]
+
+        # Removing stop_words
+        if stop_words==False:
+            words = [w for w in word_list if not w in read_messages.stopwords]
+        else:
+            words = word_list
 
         # Using counter to easily count the amount of times each word appears
-        word_count = Counter(word_list)
+        word_count = Counter(words)
         word_count.most_common()
         return word_count.most_common()
 

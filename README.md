@@ -41,6 +41,7 @@ latest released version are available at the [Python package index (PyPI)](https
 ## Tutorial
 
 * **Downlaod your [Facebook Messenger data](https://www.zapptales.com/en/download-facebook-messenger-chat-history-how-to/)**
+  * When choosing file type make sure it is JSON and not HTML
 
 * Create a python file in the **same directory** as the "inbox" folder from your download -  **not inside** the inbox folder
 
@@ -65,7 +66,7 @@ ms = zd.read_messages
 ### top_words()
 
 call `top_words(facebook_name)` on `ms` to return an ordered list of the most common words the user sent and how many times they sent it:
-
+*This method works for top words you have sent **and** top words you have recieved from a certain user*
 Example:
 ```
 ms.top_words('Jordan Milne')
@@ -75,8 +76,11 @@ Returns:
 ```
 [('I', 3), ('love', 2), ('data', 1)]
 ```
+*If you want stop words filtered out, ([what are stop words](https://en.wikipedia.org/wiki/Stop_words)) then the method would simply be:*
+```
+ms.top_words('Jordan Milne', stop_words=False)
+```
 
-*This method works for top words you have sent **and** top words you have recieved from a certain user*
 
 ### top_convos
 

@@ -1,10 +1,14 @@
 import zucked as zd
 
 def test_top_words():
-    top_words = [('hi', 3), ('lol', 2), ('one', 1)]
+    top_words = [('hi', 3), ('lol', 2), ('i', 2), ('one', 1)]
     ms = zd.read_messages
     assert ms.top_words('Jordan Milne') == top_words
 
+def test_stop_words():
+    stop_words = [('hi', 3), ('lol', 2), ('one', 1)]
+    ms = zd.read_messages
+    assert ms.top_words('Jordan Milne',False) == stop_words
 
 def test_top_convos():
     top_convo = [('Zark Muckerberg', 1)]
