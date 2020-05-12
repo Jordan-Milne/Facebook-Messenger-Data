@@ -18,7 +18,7 @@ def test_top_convos():
 # this test below passed locally but failed a lot on travis. I finally realized that the virtual machine travis-ci
 # uses to test code is in a different timezone setting and was reading the timestamp_ms as a different time, failing the test.
 def test_search_messages():
-    search = [{'Message': 'hi hi hi lol lol one',
+    search = [{'Message': 'hi hi hi lol lol one i i',
                'Sent to': 'Zark Muckerberg',
                'Date': '2020-05-11 15:59:15'}]
     ms = zd.read_messages
