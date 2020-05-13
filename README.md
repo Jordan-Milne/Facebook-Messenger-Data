@@ -144,6 +144,8 @@ Now that we have the data collected and organized we are ready to plot:
 
 ```
 import matplotlib.pyplot as plt
+%matplotlib inline
+%config InlineBackend.figure_format='retina'
 
 # get inner keys
 inner_keys = list(example.values())[0].keys()
@@ -154,7 +156,8 @@ x_axis_values = list(example.keys())
 # loop through inner_keys
 plt.title("Facebook Messenger Word Count")
 plt.xlabel("Year")
-plt.ylabel("Count");
+plt.ylabel("Count")
+plt.grid(color='lightgray', which='major');
 for x in inner_keys:
 
     # create a list of values for inner key
