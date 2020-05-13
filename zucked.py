@@ -23,7 +23,7 @@ class read_messages:
     'll','m','o','re','ve','y','ain','aren',"aren't",'couldn',"couldn't",'didn',"didn't",'doesn',"doesn't",'hadn',"hadn't",'hasn',"hasn't",'haven',"haven't",'isn',
     "isn't",'ma','mightn',"mightn't",'mustn',"mustn't",'needn',"needn't",'shan',"shan't",'shouldn',"shouldn't",'wasn',"wasn't",'weren',"weren't",'won',"won't",'wouldn',
     "wouldn't","i'm"]
-    def top_words(facebook_name, stop_words=True):
+    def top_words(facebook_name, stop_words=True, period='all time'):
         """
         Returns the top words sent by a Facebook user (can be sender or reciever of messages)
         Params:
@@ -40,11 +40,19 @@ class read_messages:
         message = []
         for i in range(len(read_messages.result)):
             for m in range(len(read_messages.result[i]['messages'])):
-                if read_messages.result[i]['messages'][m]['sender_name'] == facebook_name:
-                    try:
-                        message.append(read_messages.result[i]['messages'][m]['content'])
-                    except:
-                        pass
+                if period == 'all time':
+                    if read_messages.result[i]['messages'][m]['sender_name'] == facebook_name:
+                        try:
+                            message.append(read_messages.result[i]['messages'][m]['content'])
+                        except:
+                            pass
+                else:
+                    if read_messages.result[i]['messages'][m]['sender_name'] == facebook_name and str(datetime.fromtimestamp(read_messages.result[i]['messages'][m]['timestamp_ms']/1000))[:4] == period:
+                        try:
+                            message.append(read_messages.result[i]['messages'][m]['content'])
+                        except:
+                            pass
+
         # Removing messages facebook sent whenever someone sent a link/attachment
         stopword = 'You sent an attachment.'
         for i, sub_list in enumerate(message):
@@ -77,7 +85,7 @@ class read_messages:
         word_count.most_common()
         return word_count.most_common()
 
-    def top_convos(facebook_name):
+    def top_convos(facebook_name, period='all time'):
         """
         Returns the name of the reciever(s) and amount of messages sent
         Params:
@@ -92,10 +100,14 @@ class read_messages:
         participants = []
         for i in range(len(read_messages.result)):
             for m in range(len(read_messages.result[i]['messages'])):
-                if read_messages.result[i]['messages'][m]['sender_name'] == facebook_name:
+                if period == 'all time':
+                    if read_messages.result[i]['messages'][m]['sender_name'] == facebook_name:
                         participants.append([a['name'] for a in read_messages.result[i]['participants'] if a['name']!= facebook_name])
-        format_participants = [name[-1] if len(name) ==1 else name for name in list(map(tuple, participants))]
-
+                        format_participants = [name[-1] if len(name) ==1 else name for name in list(map(tuple, participants))]
+                else:
+                    if read_messages.result[i]['messages'][m]['sender_name'] == facebook_name and str(datetime.fromtimestamp(read_messages.result[i]['messages'][m]['timestamp_ms']/1000))[:4] == period:
+                        participants.append([a['name'] for a in read_messages.result[i]['participants'] if a['name']!= facebook_name])
+            format_participants = [name[-1] if len(name) ==1 else name for name in list(map(tuple, participants))]
         return Counter(format_participants).most_common()
 
     def search_messages(facebook_name,value):

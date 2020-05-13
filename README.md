@@ -24,7 +24,7 @@ zucked is a quick and easy way to veiw your facebook messenger data.
 * Easy viewing of your most used words on Facebook Messenger
 * See another facebook users most sent words to you
 * Check the amount of messages you have sent a person or group
-* Search a word or phrase that might have sent or recieved to see the message the word or phrase was in as well as who sent it and when
+* Search a word or phrase that you might have sent or recieved to see: The message the word or phrase was in, as well as who sent it and when the message was sent
 
 
 
@@ -33,14 +33,14 @@ zucked is a quick and easy way to veiw your facebook messenger data.
 
 The source code is currently hosted on GitHub at: https://github.com/Jordan-Milne/zucked
 
-latest released version are available at the [Python package index (PyPI)](https://pypi.org/project/zucked/)
+The latest released version is available at the [Python package index (PyPI)](https://pypi.org/project/zucked/)
 
 `pip install zucked`
 
 
 ## Tutorial
 
-* **Downlaod your [Facebook Messenger data](https://www.zapptales.com/en/download-facebook-messenger-chat-history-how-to/)**
+* **Downlaod your Facebook Messenger data ([How to](https://www.zapptales.com/en/download-facebook-messenger-chat-history-how-to/))**
   * When choosing file type make sure it is JSON and not HTML
 
 * Create a python file in the **same directory** as the "inbox" folder from your download -  **not inside** the inbox folder
