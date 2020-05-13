@@ -29,6 +29,7 @@ class read_messages:
         Params:
         - facebook_name (string): Name of desired Facebook user
         - stop_words (Bool): Will the words returned include stopwords
+        - period (string): 'all time' for all messages or a year, i.e '2016' for top words that year
         Example:
         ```
         ms = read_messages
@@ -112,7 +113,7 @@ class read_messages:
 
     def search_messages(facebook_name,value):
         """
-        Returns the name of the reciever(s) and amount of messages sent
+        Returns the name of the message reciever(s) and amount of messages sent
         Params:
         - facebook_name (string): Name of desired Facebook user (can only be message sender)
         - value (string): A word or phrase to be searched
@@ -144,3 +145,34 @@ class read_messages:
 
 
         return list_messages
+
+    def format_top_words(facebook_name, input_list, year):
+        """
+        Returns a dictionary with the year and names and counts of words inputed for a specific Facebook User
+        Params:
+        - facebook_name (string): Name of desired Facebook user
+        - input_list (list): A list of words that you want the count of for a certain year
+        - year (string): The year that the messages will be counted in
+        Example:
+        ```
+        ms = read_messages
+        ms.format_top_words('Jordan Milne', ['i','love','data','man'], '2014')
+        # {'2014': {'i': 75, 'love': 70, 'man': 17, 'data': 10}}
+        ```
+        """
+        message = []
+        format_dict = {}
+        for i in range(len(read_messages.result)):
+            for m in range(len(read_messages.result[i]['messages'])):
+                if read_messages.result[i]['messages'][m]['sender_name'] == facebook_name and str(datetime.fromtimestamp(read_messages.result[i]['messages'][m]['timestamp_ms']/1000))[:4] == year:
+                    try:
+                        message.append(read_messages.result[i]['messages'][m]['content'])
+                    except:
+                        pass
+        final_dict = {}
+        word_list = [word for sentence in message for word in sentence.split() if word in input_list]
+        # Count the number of times each word of input_list appears in word_list
+        counts = Counter(word_list)
+        [counts.setdefault(key, 0) for key in input_list]
+        final_dict[year] = dict(counts)
+        return final_dict

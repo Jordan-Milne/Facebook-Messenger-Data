@@ -23,3 +23,9 @@ def test_search_messages():
                'Date': '2020-05-11 15:59:15'}]
     ms = zd.read_messages
     assert ms.search_messages('Jordan Milne','one') == search
+
+
+def test_format_top_words():
+    format_words_output = {'2020': {'hi': 3, 'i': 2, 'love': 0, 'data': 0}}
+    ms = zd.read_messages
+    assert ms.format_top_words('Jordan Milne',['i','love','data','hi'],'2020') == format_words_output
