@@ -15,7 +15,8 @@
 
 ## What is it?
 
-zucked is a quick and easy way to veiw your facebook messenger data.
+zucked is a quick and easy way to view your facebook messenger data.
+(No data leaves your local machine, it is completely private)
 
 
 
